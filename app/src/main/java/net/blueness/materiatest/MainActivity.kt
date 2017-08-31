@@ -3,11 +3,13 @@ package net.blueness.materiatest
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
@@ -39,7 +41,13 @@ class MainActivity : AppCompatActivity() {
 
 //        偷懒了偷懒了 find你妹
         fab.setOnClickListener{
-            toast("FAB clicked")
+//            toast("FAB clicked")
+            v: View ->
+            Snackbar.make(v, "Data Deletd", Snackbar.LENGTH_SHORT)
+                    .setAction("undo", View.OnClickListener {
+                        toast("Data restored")
+                    })
+                    .show()
         }
     }
 
