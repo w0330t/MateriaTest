@@ -2,6 +2,7 @@ package net.blueness.materiatest
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.Toolbar
@@ -26,6 +27,13 @@ class MainActivity : AppCompatActivity() {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu)
+        }
+
+        val navView: NavigationView = find(R.id.nav_view)
+        navView.setCheckedItem(R.id.nav_call)
+        navView.setNavigationItemSelectedListener{
+            mDrawerLayout!!.closeDrawers()
+            true
         }
     }
 
