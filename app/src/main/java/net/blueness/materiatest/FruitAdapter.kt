@@ -16,7 +16,7 @@ import org.jetbrains.anko.find
  * Created by Blueness on 2017/9/1.
  */
 
-class FruitAdapter(val fruitList: MutableList<Fruit>):
+class FruitAdapter(val mFruitList: MutableList<Fruit>):
         RecyclerView.Adapter<FruitAdapter.ViewHolder>() {
 
     class ViewHolder(val v: View): RecyclerView.ViewHolder(v) {
@@ -26,16 +26,16 @@ class FruitAdapter(val fruitList: MutableList<Fruit>):
     }
 
     private var mContext: Context? = null
-    private var mFruitList: MutableList<Fruit>? = null
+
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        val fruit = mFruitList?.get(position)
+        val fruit = mFruitList.get(position)
         holder?.fruitName?.text = fruit?.name
         Glide.with(mContext).load(fruit?.imageId).into(holder?.fruitImage)
     }
 
     override fun getItemCount(): Int {
-        return mFruitList!!.size
+        return mFruitList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
