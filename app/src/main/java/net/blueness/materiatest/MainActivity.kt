@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 //            toast("FAB clicked")
             v: View ->
             Snackbar.make(v, "Data Deletd", Snackbar.LENGTH_SHORT)
-                    .setAction("undo", View.OnClickListener {
+                    .setAction("undo", {
                         toast("Data restored")
                     })
                     .show()
