@@ -1,8 +1,10 @@
 package net.blueness.materiatest
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +45,17 @@ class FruitAdapter(val mFruitList: MutableList<Fruit>):
             mContext = parent.context
         }
         val view: View = LayoutInflater.from(mContext).inflate(R.layout.fruit_item, parent, false)
-        return ViewHolder(view)
+        val holder = ViewHolder(view)
+        holder.cardView.setOnClickListener{
+            val position = holder.adapterPosition
+            val fruit = mFruitList.get(position)
+            val intent = Intent(mContext, FruitActivity::class.java)
+            intent.putExtra(FruitActivity.FRUIT_NAME, fruit.name)
+            intent.putExtra(FruitActivity.FRUIT_IMAGE_ID, fruit.imageId)
+
+            mContext?.startActivity(intent)
+        }
+        return holder
     }
 
 }
